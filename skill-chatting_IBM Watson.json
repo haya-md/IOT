@@ -1,0 +1,474 @@
+{
+  "intents": [
+    {
+      "intent": "welcome",
+      "examples": [
+        {
+          "text": "hi"
+        },
+        {
+          "text": "welcome"
+        },
+        {
+          "text": "slam alekom"
+        },
+        {
+          "text": "hey"
+        },
+        {
+          "text": "hello"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "question2",
+      "examples": [
+        {
+          "text": "what is the allowed distance for social space"
+        },
+        {
+          "text": "what is the allowed distance for social space?"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "question1",
+      "examples": [
+        {
+          "text": "are you male or female?"
+        },
+        {
+          "text": "are you male or female"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "question3",
+      "examples": [
+        {
+          "text": "can you speak arabic ?"
+        },
+        {
+          "text": "can you speak arabic"
+        },
+        {
+          "text": "can you speak any language other than English"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "control",
+      "examples": [
+        {
+          "text": "switch to control panel"
+        },
+        {
+          "text": "I want to remote control"
+        },
+        {
+          "text": "control it"
+        }
+      ],
+      "description": "I want to remote control "
+    },
+    {
+      "intent": "thanks",
+      "examples": [
+        {
+          "text": "thank u"
+        },
+        {
+          "text": "thank a lot"
+        },
+        {
+          "text": "thank you"
+        },
+        {
+          "text": "thanks"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "questions",
+      "examples": [
+        {
+          "text": "what the name of robot"
+        },
+        {
+          "text": "what is your name"
+        },
+        {
+          "text": "what is your name?"
+        },
+        {
+          "text": "your name?"
+        },
+        {
+          "text": "sadia?"
+        },
+        {
+          "text": "what the name of robot?"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "bye",
+      "examples": [
+        {
+          "text": "see u"
+        },
+        {
+          "text": "bye dear"
+        },
+        {
+          "text": "bye bye"
+        },
+        {
+          "text": "goodbye"
+        },
+        {
+          "text": "see you"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "control",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "right",
+          "synonyms": [
+            "go right",
+            "turn right"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "stop",
+          "synonyms": [
+            "stop move",
+            "stop moving "
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "forward",
+          "synonyms": [
+            "go forward",
+            "turn forward",
+            "forwards",
+            "go forwards",
+            "turn forwards"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "backward",
+          "synonyms": [
+            "go backward ",
+            "turn backward ",
+            "backwards",
+            "go backwards",
+            "turn backwards"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "left",
+          "synonyms": [
+            "turn left",
+            "go left "
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "panel",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Ok, done.."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_8_1595756382848",
+      "conditions": "@control",
+      "dialog_node": "node_9_1595758764187"
+    },
+    {
+      "type": "standard",
+      "title": "hello",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "welcome to you in our website "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#welcome",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_3_1595749690438",
+      "previous_sibling": "Welcome"
+    },
+    {
+      "type": "standard",
+      "title": "question3",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "No sorry :("
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#question3",
+      "dialog_node": "node_10_1595775599478",
+      "previous_sibling": "node_6_1595775536016"
+    },
+    {
+      "type": "standard",
+      "title": "thanks",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "any time!"
+              },
+              {
+                "text": "you are very welcome!"
+              },
+              {
+                "text": "welcome!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#thanks",
+      "dialog_node": "node_1_1595758381452",
+      "previous_sibling": "node_8_1595756382848"
+    },
+    {
+      "type": "standard",
+      "title": "bye",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "see you next time.."
+              },
+              {
+                "text": "Goodbye"
+              },
+              {
+                "text": "See you later.."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#bye",
+      "dialog_node": "node_7_1595775448540",
+      "previous_sibling": "node_1_1595758381452"
+    },
+    {
+      "type": "standard",
+      "title": "control",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "what direction?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#control",
+      "dialog_node": "node_8_1595756382848",
+      "previous_sibling": "node_9_1595751661869"
+    },
+    {
+      "type": "standard",
+      "title": "question1",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Female :)"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#question1",
+      "dialog_node": "node_6_1595775536016",
+      "previous_sibling": "node_7_1595752158517"
+    },
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I didn't understand. You can try rephrasing."
+              },
+              {
+                "text": "Can you reword your statement? I'm not understanding."
+              },
+              {
+                "text": "I didn't get your meaning."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Anything else",
+      "previous_sibling": "node_7_1595775448540",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "standard",
+      "title": "questions",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Sadia robot"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#questions",
+      "dialog_node": "node_9_1595751661869",
+      "previous_sibling": "node_10_1595775599478"
+    },
+    {
+      "type": "standard",
+      "title": "question",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "1 meter "
+              },
+              {
+                "text": "1 meter , be careful "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#question2",
+      "dialog_node": "node_7_1595752158517",
+      "previous_sibling": "node_3_1595749690438"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "The chatbot for robot it can help you to achieve the concept of social spacing."
+              },
+              {
+                "text": "Hello. How can I help you?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "Welcome"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "off_topic": {
+      "enabled": true
+    },
+    "disambiguation": {
+      "prompt": "Did you mean:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "None of the above"
+    },
+    "system_entities": {
+      "enabled": true
+    },
+    "human_agent_assist": {
+      "prompt": "Did you mean:"
+    },
+    "spelling_auto_correct": true
+  },
+  "learning_opt_out": false,
+  "name": "chatting",
+  "language": "en",
+  "description": ""
+}
